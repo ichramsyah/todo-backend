@@ -18,7 +18,7 @@ pipeline {
     }
     stage('Smoke test') {
       steps {
-        sh 'sleep 5 && docker exec backend wget -qO- http://localhost:8080/api/health'
+        sh 'sleep 5 && docker exec backend wget -qO- http://127.0.0.1:8080/api/health'
       }
     }
   }
