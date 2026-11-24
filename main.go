@@ -59,7 +59,11 @@ func main() {
 	mux.HandleFunc("PATCH /api/todos/{id}", s.toggle)
 	mux.HandleFunc("DELETE /api/todos/{id}", s.remove)
 
-	addr := ":8080"
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080"
+	}
+	addr := ":" + port
 	log.Printf("listening on %s", addr)
 	log.Fatal(http.ListenAndServe(addr, mux))
 }
