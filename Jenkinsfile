@@ -1,8 +1,8 @@
 pipeline {
   agent any
   environment {
-    IMAGE = 'todo-backend:latest'
-    DEPLOY_DIR = '/opt/todo-app'
+    IMAGE = 'backend:latest'
+    DEPLOY_DIR = '/opt/application'
   }
   stages {
     stage('Checkout') {
@@ -18,7 +18,7 @@ pipeline {
     }
     stage('Smoke test') {
       steps {
-        sh 'sleep 5 && docker exec todo-backend wget -qO- http://localhost:8080/api/health'
+        sh 'sleep 5 && docker exec backend wget -qO- http://localhost:8080/api/health'
       }
     }
   }
